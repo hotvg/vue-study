@@ -1,12 +1,15 @@
-var utils = require('./utils')
-var config = require('../config')
-var isProduction = process.env.NODE_ENV === 'production'
+const utils = require('./utils');
+const config = require('../config');
+let isProduction = process.env.NODE_ENV === 'production';
 
 module.exports = {
+  // 处理.vue文件中的样式
   loaders: utils.cssLoaders({
+    // 是否打开sourceMap
     sourceMap: isProduction
       ? config.build.productionSourceMap
       : config.dev.cssSourceMap,
+    // 是否提取样式到单独的文件
     extract: isProduction
   }),
   transformToRequire: {
@@ -15,4 +18,4 @@ module.exports = {
     img: 'src',
     image: 'xlink:href'
   }
-}
+};
