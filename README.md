@@ -33,15 +33,11 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 三、 安装 `vue-cli`
 
 ### 一、安装GIT
-1.GIT 官网（https://git-scm.com/downloads）上下载 GIT 的安装包，默认安装完成即可。
-
-2.安装完成后，右键桌面打开 `git bash here` 命令窗口，输入 `cd ~/.ssh` 检查计算机是否有 `ssh ` 密钥，如果有则进入 `~/.ssh` 路径下（用 `ls` 命令查看当前路径文件，用 `rm *` 删除所有文件），如果没有则提示：No such file or directory。
-
-3.输入 `ssh-keygen -t rsa -C "xxxxxx@xxxx.com"`（填写自己真实有效的email地址，然后一直回车），完成后，打开本地 `~/.ssh/id_rsa.pub` 文件，此文件中的内容为刚刚生成的密钥。
-
-4.在 github 个人账号上添加一个 ssh key，然后在本地 bash 中输入 `ssh -T git@github.com` 测试连接，若没有问题则进行第五步，若有问题则返回第二步，清除 ssh 密钥。
-
-5.设置用户信息。
+1. GIT 官网（https://git-scm.com/downloads）上下载 GIT 的安装包，默认安装完成即可。
+2. 安装完成后，右键桌面打开 `git bash here` 命令窗口，输入 `cd ~/.ssh` 检查计算机是否有 `ssh ` 密钥，如果有则进入 `~/.ssh` 路径下（用 `ls` 命令查看当前路径文件，用 `rm *` 删除所有文件），如果没有则提示：No such file or directory。
+3. 输入 `ssh-keygen -t rsa -C "xxxxxx@xxxx.com"`（填写自己真实有效的email地址，然后一直回车），完成后，打开本地 `~/.ssh/id_rsa.pub` 文件，此文件中的内容为刚刚生成的密钥。
+4. 在 github 个人账号上添加一个 ssh key，然后在本地 bash 中输入 `ssh -T git@github.com` 测试连接，若没有问题则进行第五步，若有问题则返回第二步，清除 ssh 密钥。
+5. 设置用户信息。
 
 ``` bash
 	#给自己起个用户名
@@ -51,7 +47,7 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
     git config --global user.email "xxxxxx@xxxx.com"
 ```
 
-6.设置 token。token 可在 github 中创建。
+6. 设置 token。token 可在 github 中创建。
 
 ``` bash
 	#github上的用户名
@@ -61,7 +57,7 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 	git config --global github.token xxxxxxxxxxxxxxxx
 ```
 
-7.示例-在本地创建一个新项目。
+7. 示例-在本地创建一个新项目。
 
 ``` bash
 	#新建一个文件夹 hello-world
@@ -79,7 +75,7 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 备注：如果以上还是不行，可通过消除代理的方式，使得github的账号登录界面重新出现。如果成功了别忘了在环境变量中添加git的环境变量，如：`C:\Program Files\Git\cmd`。
 
 ``` bash
-	git config --global http.proxy 
+	git config --global http.proxy
 	#查询到当前设置了代理，所以我取消这个设置：
 	#
 	git config --global --unset http.proxy
@@ -125,44 +121,44 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 5. [Git管理分支][18]
 
 ### 二、安装node.js
-1.在 `node.js` 官网（https://nodejs.org/en/download/）下载 `lts` 版本的进行安装。
+1. 在 `node.js` 官网（https://nodejs.org/en/download/）下载 `lts` 版本的进行安装。
 
-2.然后配置环境变量：`D:\Program Files\nodejs\`。我这里并没有对npm安装的全局模块的路径进行设置，如有需要可参考后面资料进行设置。
+2. 然后配置环境变量：`D:\Program Files\nodejs\`。我这里并没有对npm安装的全局模块的路径进行设置，如有需要可参考后面资料进行设置。
 
-3.安装完成后，可在桌面新建一个 `test.js`，文件内容如下：
+3. 安装完成后，可在桌面新建一个 `test.js`，文件内容如下：
 
 ```
-	var http = require("http"); 
-	http.createServer(function(request, response) { 
-	response.writeHead(200, {"Content-Type": "text/plain"}); 
-	response.write("test nodjs"); 
-	response.end(); 
-	}).listen(8899); 
+	var http = require("http");
+	http.createServer(function(request, response) {
+	response.writeHead(200, {"Content-Type": "text/plain"});
+	response.write("test nodjs");
+	response.end();
+	}).listen(8899);
 	console.log("nodejs start listen 8899 port!");
 ```
 
 保存后打开 `cmd` 窗口，输入 `node C:\Users\yufeng.liu\Desktop\test.js` ，然后在浏览器输入地址 `http://127.0.0.1:8899/` 就可以看到输出的 `test nodejs`。
 
-4.设置 `npm` 的镜像，笔者采用的是淘宝的npm镜像，且设为持久使用。
+4. 设置 `npm` 的镜像，笔者采用的是淘宝的npm镜像，且设为持久使用。
 
 > 1. 临时使用 `npm --registry https://registry.npm.taobao.org install express` ；
 > 2. 持久使用 `npm config set registry https://registry.npm.taobao.org`，配置后可通过 `npm config get registry` 或 `npm info express` ；
 > 3. 通过cnpm使用 `npm install -g cnpm --registry=https://registry.npm.taobao.org` 。
 
 **参考资料：**
-1.[淘宝 NPM 镜像][19]
-2.[npm太慢， 淘宝npm镜像使用方法][20]
-3.[Node.js安装及环境配置之Windows篇][21] (`npm config set prefix"D:\Develop\nodejs\node_global"` `prefix` 与 `"` 应有一个空格，其他可借鉴，虽然笔者没试过，但是会难倒聪明的你们吗？不可能的嘛，哈哈)
+1. [淘宝 NPM 镜像][19]
+2. [npm太慢， 淘宝npm镜像使用方法][20]
+3. [Node.js安装及环境配置之Windows篇][21] (`npm config set prefix"D:\Develop\nodejs\node_global"` `prefix` 与 `"` 应有一个空格，其他可借鉴，虽然笔者没试过，但是会难倒聪明的你们吗？不可能的嘛，哈哈)
 
 ### 三、安装 `vue-cli`
-1.通过 `npm install -g vue-cli` 安装全局的 `vue-cli` 命令。
-2.进入任意目录下，输入 `vue init <template-name> <project-name>` 如：`vue init webpack vue-demo` 。
+1. 通过 `npm install -g vue-cli` 安装全局的 `vue-cli` 命令。
+2. 进入任意目录下，输入 `vue init <template-name> <project-name>` 如：`vue init webpack vue-demo` 。
 
 **参考资料：**
-1.[基于vue-cli快速构建][22]
-2.[Vue 爬坑之路（一）—— 使用 vue-cli 搭建项目][23]
-3.[vue-cli#2.0项目结构分析][24]
-4.[vue-cli的webpack模板项目配置文件分析][25]
+1. [基于vue-cli快速构建][22]
+2. [Vue 爬坑之路（一）—— 使用 vue-cli 搭建项目][23]
+3. [vue-cli#2.0项目结构分析][24]
+4. [vue-cli的webpack模板项目配置文件分析][25]
 
 ## 协助工具简单介绍
 一、前端构建工具 `webpack`
