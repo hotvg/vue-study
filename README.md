@@ -28,9 +28,9 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 > 4. 语法环境：[ECMAScript 6][9]、[Babel 转码器][10]。
 
 ## 开发环境准备
-一、 安装 `GIT`
-二、 安装 `node.js`
-三、 安装 `vue-cli`
+一、 安装 `GIT` <br/>
+二、 安装 `node.js` <br/>
+三、 安装 `vue-cli` <br/>
 
 ### 一、安装GIT
 1. GIT 官网（https://git-scm.com/downloads）上下载 GIT 的安装包，默认安装完成即可。
@@ -161,12 +161,12 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 4. [vue-cli的webpack模板项目配置文件分析][25]
 
 ## 协助工具简单介绍
-一、前端构建工具 `webpack`
-二、自动化构建工具 `gulp`
-三、状态管理 `vuex`
-四、前端路由 `vue-router 2`
-五、服务端通信 `axios`
-六、代码检查 `eslint`
+一、前端构建工具 `webpack` <br/>
+二、自动化构建工具 `gulp` <br/>
+三、状态管理 `vuex` <br/>
+四、前端路由 `vue-router 2` <br/>
+五、服务端通信 `axios` <br/>
+六、代码检查 `eslint` <br/>
 
 [1]: https://www.jetbrains.com/webstorm/
 [2]: http://www.sublimetext.com/
