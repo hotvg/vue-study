@@ -40,46 +40,46 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 5. 设置用户信息。
 
 ``` bash
-	#给自己起个用户名
-    git config --global user.name "xxxxxx"
+#给自己起个用户名
+git config --global user.name "xxxxxx"
 
-    #填写自己的真实邮箱
-    git config --global user.email "xxxxxx@xxxx.com"
+#填写自己的真实邮箱
+git config --global user.email "xxxxxx@xxxx.com"
 ```
 
 6. 设置 token。token 可在 github 中创建。
 
 ``` bash
-	#github上的用户名
-	git config --global github.user xxxxxxx
+#github上的用户名
+git config --global github.user xxxxxxx
 
-	#github上创建的token
-	git config --global github.token xxxxxxxxxxxxxxxx
+#github上创建的token
+git config --global github.token xxxxxxxxxxxxxxxx
 ```
 
 7. 示例-在本地创建一个新项目。
 
 ``` bash
-	#新建一个文件夹 hello-world
-	#进入 hello-world，右键打开 git bash here
-	echo "# hello-world" >> README.md
-	git init
-	git add README.md
-	git commit -m "first commit"
+#新建一个文件夹 hello-world
+#进入 hello-world，右键打开 git bash here
+echo "# hello-world" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
 
-	#push到一个已经存在的远程git地址
-	git remote add origin https://github.com/xiaoxinfly/hello-world.git
-	git push -u origin master
+#push到一个已经存在的远程git地址
+git remote add origin https://github.com/xiaoxinfly/hello-world.git
+git push -u origin master
 ```
 
 备注：如果以上还是不行，可通过消除代理的方式，使得github的账号登录界面重新出现。如果成功了别忘了在环境变量中添加git的环境变量，如：`C:\Program Files\Git\cmd`。
 
 ``` bash
-	git config --global http.proxy
-	#查询到当前设置了代理，所以我取消这个设置：
-	#
-	git config --global --unset http.proxy
-	#再查询，已经没有了代理，然后再push,成功了！
+git config --global http.proxy
+#查询到当前设置了代理，所以我取消这个设置：
+#
+git config --global --unset http.proxy
+#再查询，已经没有了代理，然后再push,成功了！
 ```
 **GIT笔记：**
 
@@ -127,14 +127,14 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 
 3. 安装完成后，可在桌面新建一个 `test.js`，文件内容如下：
 
-```
-	var http = require("http");
-	http.createServer(function(request, response) {
-	response.writeHead(200, {"Content-Type": "text/plain"});
-	response.write("test nodjs");
-	response.end();
-	}).listen(8899);
-	console.log("nodejs start listen 8899 port!");
+```javascript
+var http = require("http");
+http.createServer(function(request, response) {
+response.writeHead(200, {"Content-Type": "text/plain"});
+response.write("test nodjs");
+response.end();
+}).listen(8899);
+console.log("nodejs start listen 8899 port!");
 ```
 
 保存后打开 `cmd` 窗口，输入 `node C:\Users\yufeng.liu\Desktop\test.js` ，然后在浏览器输入地址 `http://127.0.0.1:8899/` 就可以看到输出的 `test nodejs`。
@@ -149,6 +149,8 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 1. [淘宝 NPM 镜像][19]
 2. [npm太慢， 淘宝npm镜像使用方法][20]
 3. [Node.js安装及环境配置之Windows篇][21] (`npm config set prefix"D:\Develop\nodejs\node_global"` `prefix` 与 `"` 应有一个空格，其他可借鉴，虽然笔者没试过，但是会难倒聪明的你们吗？不可能的嘛，哈哈)
+4. [npm常用命令解析][27]
+5. [NPM常用命令][28]
 
 ### 三、安装 `vue-cli`
 1. 通过 `npm install -g vue-cli` 安装全局的 `vue-cli` 命令。
@@ -167,6 +169,36 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 四、前端路由 `vue-router 2` <br/>
 五、服务端通信 `axios` <br/>
 六、代码检查 `eslint` <br/>
+
+### 一、前端构建工具 `webpack`
+webpack是一款前端模块打包工具。两个重要概念：模块和打包：
+
+1. 模块。将前端代码进行拆分，写成一个个小模块，目前有commonjs规范、amd规范、ES6能够提供模块化方案，使代码模块化，但是浏览器并不能直接解析模块化后的代码，需要将模块化的代码转换成能识别的内容。
+2. 打包。为了将模块化的代码转换成浏览器支持的文件，便是打包，而这个工作可以由webpack来做。
+
+webpack的功能并不局限于此，还有更复杂的功能。后面我们来慢慢探讨。
+
+全局安装webpack： `npm install -g webpack`
+
+温馨提示：Vue 项目基本上是使用的 ES6 模块化方案，因此在学习的过程中，可先学习 [ES6][9] 的基础语法。
+
+#### 1、在项目中使用 webpack
+在项目根目录下使用命令 `npm init`生成一个package.json文件，在生成package.json的时候需要填写name、version、description、entry point、test command、git repository、keywords、author、license等信息。
+
+package.json相关介绍可参考：[npm package.json属性详解][29]
+
+#### 2、安装webpack到项目中
+在项目根目录下使用命令 `npm install --save-dev webpack` 可在package.json的添加如下代码：
+
+```
+"devDependencies":{
+	"webpack":"^3.6.0"
+}
+```
+
+这个时候可在项目目录中看到新增的mode_modules的文件夹，打开文件夹可看到刚安装的webpack模块。
+
+
 
 [1]: https://www.jetbrains.com/webstorm/
 [2]: http://www.sublimetext.com/
@@ -194,3 +226,6 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 [24]: https://segmentfault.com/a/1190000007880723
 [25]: http://blog.csdn.net/hongchh/article/details/55113751
 [26]: https://gulpjs.com/
+[27]: http://blog.csdn.net/bing_javascript/article/details/52787460
+[28]: http://blog.csdn.net/wkyseo/article/details/54313580
+[29]: http://www.cnblogs.com/tzyy/p/5193811.html
