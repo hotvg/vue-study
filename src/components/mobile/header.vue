@@ -1,5 +1,5 @@
 <template>
-  <mt-header fixed title="固定在顶部"></mt-header>
+  <mt-header fixed :title="title"></mt-header>
 </template>
 <script>
   import Vue from 'vue'
@@ -12,7 +12,7 @@
     name: 'header',
     data () {
       return {
-        msg: 'LOGO'
+        title: '电影列表'
       }
     }
   }

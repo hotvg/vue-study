@@ -1,7 +1,10 @@
 <template>
   <mt-loadmore ref="loadmore">
-    <ul>
-      <li v-for="item in list">{{ item }}</li>
+    <ul id="movie-ul">
+      <li v-for="moive in hotPlayMovies.movies">
+        <img :src="moive.img" width="80" height="80"/>
+        <span>{{ moive.titleCn }}</span>
+      </li>
     </ul>
   </mt-loadmore>
 </template>
@@ -17,24 +20,22 @@
     name: 'loadmore',
     data () {
       return {
-        list: []
+        hotPlayMovies: []
       }
     },
     mounted () {
-      let obj = {
-        locationId : 290
-      }
       axios.get('/api/PageSubArea/HotPlayMovies.api',
         {
-          params: obj
+          params: {
+            locationId : 290
+          }
         })
         .then( res => {
-          this.list = res.data;
-        console.log(res.data);
-        console.log(res.status);
-        console.log(res.statusText);
-        console.log(res.headers);
-        console.log(res.config);
+          this.hotPlayMovies = res.data;
+          //console.log(res.status);
+          //console.log(res.statusText);
+          //console.log(res.headers);
+          //console.log(res.config);
         }, err => console.info( '02==>' + err ))
         .catch( err => console.info('error occur'))
     }
@@ -49,5 +50,8 @@
     text-align: center;
     color: #2c3e50;
     margin-top: 60px;
+  }
+  #movie-ul{
+    list-style: none;
   }
 </style>
