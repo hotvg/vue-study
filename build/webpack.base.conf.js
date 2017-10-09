@@ -37,7 +37,9 @@ module.exports = {
       '@': resolve('src'),
       'modules': resolve('src/modules'),
       'assets': resolve('src/assets'),
-      'components': resolve('src/components')
+      'components': resolve('src/components'),
+      'router':resolve('src/router'),
+      'config':resolve('config')
       /*,
       'kendoUi':  path.resolve('./src/modules/vendor/kendoUi/js'),
       'kendoUiStyles': path.resolve('./src/modules/vendor/kendoUi/styles')*/

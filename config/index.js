@@ -1,5 +1,6 @@
 // see http://vuejs-templates.github.io/webpack for documentation.
 const path = require('path');
+const proxyConfig = require('./proxyConfig')
 
 module.exports = {
   // 构建产品时使用的配置
@@ -46,7 +47,7 @@ module.exports = {
     assetsPublicPath: '/',
     // 代理配置表，在这里可以配置特定的请求代理到对应的API接口
     // 例如将'localhost:8080/api/xxx'代理到'www.example.com/api/xxx'
-    proxyTable: {},
+    proxyTable: proxyConfig.proxyList,
     // CSS Sourcemaps off by default because relative paths are "buggy"
     // with this option, according to the CSS-Loader README
     // (https://github.com/webpack/css-loader#sourcemaps)
