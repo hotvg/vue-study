@@ -12,7 +12,7 @@
     name: 'header',
     data () {
       return {
-        title: '电影列表'
+        title: this.$store.state.title
       }
     }
   }
